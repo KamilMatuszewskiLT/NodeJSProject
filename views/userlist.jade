@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1. 
+    Users list: 
+  p sometext
+  ul
+    each user, i in userlist
+      li=user.firstname+" "+user.lastname
+        
