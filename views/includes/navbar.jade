@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+   script(src="/javascripts/datetime.js")
+       
+   ul#NavBar
+     li.NavBarElement
+       a(href="/") Home
+     li.NavBarElement
+       a(href="/characters") Characters
+     li.NavBarElement
+       a(href="/locations") Locations
+     li#time.NavBarDateTime(style='float:right') time
+     li#date.NavBarDateTime(style='float:right') date

@@ -3,7 +3,10 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { 
+    title: 'Express',
+    
+   });
 });
 
 /* GET Hello World page. */
@@ -19,6 +22,28 @@ router.get('/userlist', function(req, res) {
     console.log(docs);
       res.render('userlist', {
           "userlist" : docs
+      });
+  });
+});
+/* GET characters page. */
+router.get('/characters', function(req, res) {
+  var db = req.db;
+  var collection = db.get('characters');
+  collection.find({},{},function(e,docs){
+    console.log(docs);
+      res.render('characters', {
+          "characters" : docs
+      });
+  });
+});
+/* GET locations page. */
+router.get('/locations', function(req, res) {
+  var db = req.db;
+  var collection = db.get('locations');
+  collection.find({},{},function(e,docs){
+    console.log(docs);
+      res.render('locations', {
+          "locations" : docs
       });
   });
 });
