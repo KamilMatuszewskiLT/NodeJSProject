@@ -1,1 +1,11 @@
 include ./includes/navbar.jade
+
+ul
+    each user, i in characters
+      li=user.name
+        
+
+        form#formAddUser(name="adduser",method="post",action="/adduser")
+    input#inputUserFirstname(type="text", placeholder="first name", name="firstname")
+    input#inputUserLastname(type="text", placeholder="lastname", name="lastname")
+    button#btnSubmit(type="submit") submit

@@ -3,32 +3,19 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  var dbcols = req.collectionNames;
   res.render('index', { 
     title: 'Express',
     
    });
 });
 
-/* GET Hello World page. */
-router.get('/helloworld', function(req, res) {
-  res.render('helloworld', { title: 'Hello, World!' });
-});
-
-/* GET Userlist page. */
-router.get('/userlist', function(req, res) {
-  var db = req.db;
-  var collection = db.get('users');
-  collection.find({},{},function(e,docs){
-    console.log(docs);
-      res.render('userlist', {
-          "userlist" : docs
-      });
-  });
-});
 /* GET characters page. */
 router.get('/characters', function(req, res) {
   var db = req.db;
-  var collection = db.get('characters');
+  var collection = db.get('Characters');
+  console.log(typeof(names));
+  console.log(names);
   collection.find({},{},function(e,docs){
     console.log(docs);
       res.render('characters', {
@@ -36,21 +23,17 @@ router.get('/characters', function(req, res) {
       });
   });
 });
+
 /* GET locations page. */
 router.get('/locations', function(req, res) {
   var db = req.db;
-  var collection = db.get('locations');
+  var collection = db.get('Locations');
   collection.find({},{},function(e,docs){
     console.log(docs);
       res.render('locations', {
           "locations" : docs
       });
   });
-});
-
-/* GET New User page. */
-router.get('/newuser', function(req, res) {
-  res.render('newuser', { title: 'Add New User' });
 });
 
 /* POST to Add User Service */
